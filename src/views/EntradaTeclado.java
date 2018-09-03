@@ -25,6 +25,11 @@ import java.util.Scanner;
         return sc.nextLine();
     }
     
+    public String leerGrupo(){
+        sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+    
     public int leerEntero(){
         try{
             System.out.println("Escribe un dato entero");

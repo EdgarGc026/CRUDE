@@ -28,9 +28,10 @@ public class ListaCRUDE implements GrupoDAO {
          PreparedStatement consulta;
          if(estudiante != null){
             consulta = this.conn.prepareStatement("INSERT INTO " + this.tabla +
-                    "(matricula, nombre) VALUES(?, ?)");
+                    "(matricula, nombre, grupo) VALUES(?, ?, ?)");
             consulta.setString(1, estudiante.getMatricula());
             consulta.setString(2, estudiante.getApellidoP_M_nombre());
+            consulta.setString(3, estudiante.grupoEstudiante);
          consulta.executeUpdate();
          }else{
              System.out.println("El objeto es null");
@@ -46,10 +47,10 @@ public class ListaCRUDE implements GrupoDAO {
     public List<Estudiante> readAll() throws SQLException{
       List<Estudiante> estudiantes = new ArrayList<>();
       try{
-         PreparedStatement consulta = conn.prepareStatement("SELECT matricula, nombre FROM " + this.tabla + " ORDER BY matricula");
+         PreparedStatement consulta = conn.prepareStatement("SELECT matricula, nombre, grupo FROM " + this.tabla + " ORDER BY matricula");
          ResultSet resultado = consulta.executeQuery();
          while(resultado.next()){
-            estudiantes.add(new Estudiante(resultado.getString("matricula"), resultado.getString("nombre")));
+            estudiantes.add(new Estudiante(resultado.getString("matricula"), resultado.getString("nombre"), resultado.getString("grupo")));
          }
          
       }catch(SQLException ex){
@@ -77,12 +78,13 @@ public class ListaCRUDE implements GrupoDAO {
         return 0;
     }
     
-    public int modificar(String matricula,String matriculaNueva, String nombre){
+    public int modificar(String matricula,String matriculaNueva, String grupo,String nombre){
         try{
-            PreparedStatement consulta = conn.prepareStatement("UPDATE " + this.tabla + " SET matricula = ?, nombre = ? WHERE matricula = ?");
+            PreparedStatement consulta = conn.prepareStatement("UPDATE " + this.tabla + " SET matricula = ?, nombre = ?, grupo = ? WHERE matricula = ?");
             consulta.setString(1, matriculaNueva);
             consulta.setString(2, nombre);
-            consulta.setString(3, matricula);
+            consulta.setString(3, grupo);
+            consulta.setString(4, matricula);
             return (consulta.executeUpdate());
         }catch(SQLException ex){
             System.out.println(":c" + ex.getLocalizedMessage());

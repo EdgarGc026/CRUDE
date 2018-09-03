@@ -64,6 +64,11 @@ public class MensajeUsuario {
             return entradaTeclado.leerEntero();
         }
         
+        public String leerGrupo(){
+            System.out.println("Introdusca el grupo del estudiante");
+            return entradaTeclado.leerGrupo();
+        }
+        
         /**
          * Indica al usuario si el registro fue eliminado o no lo fue
          * @param resultado 
@@ -75,7 +80,7 @@ public class MensajeUsuario {
                 System.out.println("\nEl registro no fue eliminado\n");
             }
         }     
-        
+        /*
         public void mensajeModificarEstudiante(int resultado){
             if(resultado == 1){
                 System.out.println("Registro modificado");
@@ -83,7 +88,7 @@ public class MensajeUsuario {
                 System.out.println("No eliminado");
             }
         }
-        
+       /* 
         public void mensajeModificarMatricula(int resultado){
             if(resultado == 1){
                 System.out.println("Registro modificado");
@@ -91,7 +96,7 @@ public class MensajeUsuario {
                 System.out.println("No eliminado");
             }
         }
-        
+        */
         public void mensajeActualizarDatos(int actualizacion){
             if(actualizacion == 1){
                 System.out.println("Registro dado");

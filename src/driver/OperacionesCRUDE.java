@@ -26,8 +26,8 @@ public class OperacionesCRUDE {
          
      }
      
-     public void guardarEstudiante(String matricula, String nombre) throws SQLException{
-         Estudiante estudiante = new Estudiante(matricula, nombre);
+     public void guardarEstudiante(String matricula,String grupo, String nombre) throws SQLException{
+         Estudiante estudiante = new Estudiante(matricula, nombre, grupo);
          lista.create(estudiante);
      }
      
@@ -40,15 +40,14 @@ public class OperacionesCRUDE {
          return lista.eliminar(matricula);
      }
      
-     public int modificarEstudiante(String matricula, String matriculaNueva, String nombre) throws SQLException{
-         return lista.modificar(matricula, matriculaNueva, nombre);
+     public int modificarEstudiante(String matricula, String matriculaNueva, String grupo,String nombre) throws SQLException{
+         return lista.modificar(matricula, matriculaNueva, grupo,nombre);
      }
-     
-     
+        
      public void operaciones(int opcion) throws SQLException{
          switch(opcion){
              case 1:
-                 this.guardarEstudiante(this.mensajeUsuario.leerMatriculaEstudiante(), this.mensajeUsuario.leerNombreEstudiante());
+                 this.guardarEstudiante(this.mensajeUsuario.leerMatriculaEstudiante(), this.mensajeUsuario.leerNombreEstudiante(), this.mensajeUsuario.leerGrupo());
                  break;
              case 2:
                  this.mensajeUsuario.mostrarEstudiante(this.obtenerEstudiante());
@@ -59,7 +58,7 @@ public class OperacionesCRUDE {
                  this.mensajeUsuario.mensajesEliminarUsuario(op);
                  break;
              case 4:
-               int op2 = this.modificarEstudiante(this.mensajeUsuario.leerMatriculaEstudiante(), this.mensajeUsuario.leerNuevaMatricula(), this.mensajeUsuario.leerNombreEstudiante());
+               int op2 = this.modificarEstudiante(this.mensajeUsuario.leerMatriculaEstudiante(), this.mensajeUsuario.leerNuevaMatricula(), this.mensajeUsuario.leerNombreEstudiante(), this.mensajeUsuario.leerGrupo());
                  this.mensajeUsuario.mensajeActualizarDatos(op2);
                  break;
              case 5:
