@@ -12,10 +12,20 @@ package models;
 public class Estudiante {
      String matricula;
     String apellidoP_M_nombre;
+    String grupoEstudiante;
 
-    public Estudiante(String matricula, String apellidoP_M_nombre) {
+    public Estudiante(String matricula, String apellidoP_M_nombre, String grupoEstudiante) {
         this.matricula = matricula;
         this.apellidoP_M_nombre = apellidoP_M_nombre;
+        this.grupoEstudiante = grupoEstudiante;
+    }
+
+    public String getGrupoEstudiante() {
+        return grupoEstudiante;
+    }
+
+    public void setGrupoEstudiante(String grupoEstudiante) {
+        this.grupoEstudiante = grupoEstudiante;
     }
 
     public String getMatricula() {
@@ -33,9 +43,11 @@ public class Estudiante {
     public void setApellidoP_M_nombre(String apellidoP_M_nombre) {
         this.apellidoP_M_nombre = apellidoP_M_nombre;
     }
-    
+
     @Override
     public String toString() {
-        return "Estudiante{" + "matricula=" + matricula + ", apellidoP_M_nombre=" + apellidoP_M_nombre + '}';
+        return "Estudiante{" + "matricula=" + matricula + ", apellidoP_M_nombre=" + apellidoP_M_nombre + ", grupoEstudiante=" + grupoEstudiante + '}';
     }
+    
+   
 }

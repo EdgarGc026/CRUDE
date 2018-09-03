@@ -18,5 +18,5 @@ public interface GrupoDAO {
     
     //Eliminar
     public int eliminar(String matricula) throws SQLException;
-    public int modificar(String matricula, String matriculaNueva, String nombre);
+    public int modificar(String matricula, String matriculaNueva, String nombre) throws SQLException;
 }
